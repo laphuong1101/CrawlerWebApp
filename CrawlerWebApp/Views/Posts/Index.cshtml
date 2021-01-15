@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CrawlerWebApp.Post>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="title-folder">
+    <h2>
+        <a title="Sức khỏe" data-medium="Menu-SucKhoe" href="/suc-khoe" data-itm-source="#vn_source=Folder&amp;vn_campaign=Header&amp;vn_medium=Menu-SucKhoe&amp;vn_term=Desktop" data-itm-added="1">Sức khỏe</a>
+    </h2>
+</div>
+
+@foreach (var item in Model)
+{
+  
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h2 class="title-news">
+                <a data-medium="Item-4" data-thumb="1" href="@item.UrlBasePost" title="@item.Title" data-itm-source="#vn_source=Folder&amp;vn_campaign=Stream&amp;vn_medium=Item-4&amp;vn_term=Desktop&amp;vn_thumb=1" data-itm-added="1">
+                    @item.Title
+                </a>
+            </h2>
+        </div>
+        <div class="panel-body">
+            <p class="description">
+                <a data-medium="Item-4" data-thumb="1" href="@Url.Action("Details", new {id = item.Id })" title="@item.Title" data-itm-source="#vn_source=Folder&amp;vn_campaign=Stream&amp;vn_medium=Item-4&amp;vn_term=Desktop&amp;vn_thumb=1" data-itm-added="1">
+                    @item.Description
+                </a>
+                <span class="meta-news">
+                    <a class="count_cmt" href="@item.UrlBasePost" style="white-space: nowrap; display: none;">
+                        <svg class="ic ic-comment"><use xlink:href="#Comment-Reg"></use></svg>
+                        <span class="font_icon widget-comment-4212847-1"></span>
+                    </a>
+                </span>
+            </p>
+            <a data-medium="Item-4" data-thumb="1" href="@item.UrlBasePost" class="thumb thumb-5x3" title="@item.Title" data-itm-source="#vn_source=Folder&amp;vn_campaign=Stream&amp;vn_medium=Item-4&amp;vn_term=Desktop&amp;vn_thumb=1" data-itm-added="1">
+                <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source srcset="@item.UrlImg 1x, @item.UrlImg 2x">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img itemprop="contentUrl"  intrinsicsize="300x180" alt="@item.Title" class="lazy loading" src="@item.UrlImg" data-ll-status="loading">
+                </picture>
+            </a>
+        </div>
+    </div>
+}
+
